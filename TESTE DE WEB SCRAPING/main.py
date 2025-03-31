@@ -49,7 +49,6 @@ def download_files(url):
         annex_1_link = driver.find_element(By.XPATH, annex_1_xpath).get_attribute('href')
 
         # faz o download do Anexo 1 para a pasta de download
-        # annex_1_path = f"{current_path}/downloads/anexo_1.pdf"
         annex_1_path = current_path / "downloads/anexo_1.pdf"
         urllib.request.urlretrieve(annex_1_link, annex_1_path)
 
@@ -60,14 +59,13 @@ def download_files(url):
         annex_2_link = driver.find_element(By.XPATH, annex_2_xpath).get_attribute('href')
 
         # faz o download do Anexo 2 para a pasta de download
-        # annex_2_path = f"{current_path}/downloads/anexo_2.pdf"
         annex_2_path = current_path / "downloads/anexo_2.pdf"
 
         urllib.request.urlretrieve(annex_2_link, annex_2_path)
 
         # Compacta os arquivos baixados
         file_list = [annex_1_path, annex_2_path]
-        zip_path = f"{current_path}/results/anexos.zip"
+        zip_path = current_path / "results/anexos.zip"
 
         with zipfile.ZipFile(zip_path, 'w') as zipf:
             for file in file_list:
