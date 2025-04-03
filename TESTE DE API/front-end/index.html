@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Dados</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h2 >Filtro de Dados do CSV</h2>
+
+        <!-- Seletor de filtros -->
+        <div class="filter">
+            <label for="filterKey">Coluna:</label>
+            <select v-model="filterKey">
+                <option v-for="col in columns" :value="col">{{ col }}</option>
+            </select>
+    
+            <label for="filterValue">Valor:</label>
+            <input v-model="filterValue" placeholder="Digite um valor">
+    
+            <button @click="fetchData">Buscar</button>
+        </div>
+
+        <!-- Tabela com resultados da pesquisa -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th v-for="col in columns">{{ col }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in results">
+                    <td v-for="col in columns">{{ row[col] || '-' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
