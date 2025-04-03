@@ -1,7 +1,6 @@
 import pandas as pd
 from pathlib import Path
 
-
 # Obtém o caminho do diretório atual
 current_path = Path(__file__).parent.resolve()
 
