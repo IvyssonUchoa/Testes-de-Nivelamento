@@ -19,6 +19,8 @@ try:
 
     # Extrai as tabelas do arquivo PDF
     with pdfplumber.open(pdf_path) as pdf: 
+        print("Iniciado extração de dados")
+        
         for page in pdf.pages:
             table = page.extract_table()
             
